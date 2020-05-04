@@ -1,8 +1,8 @@
 //Rutas del menu principal
 const cargoEmployeeCtrll = {};
-const CargoEmpleado = require('../models/CargoEmpleado');            //Modelo de datos DB Empleados
+const CargoEmpleado = require('../models/CargoEmpleado');       //Modelo de datos DB CargoEmpleados
 const Empleado = require('../models/Empleado');                 //Modelo de datos DB Empleados
-const Cargo = require('../models/Cargo');                    //Modelo de datos DB Empleados
+const Cargo = require('../models/Cargo');                       //Modelo de datos DB Cargos
 
 
 cargoEmployeeCtrll.add = (req, res) => {
@@ -20,7 +20,6 @@ cargoEmployeeCtrll.add = (req, res) => {
 
 cargoEmployeeCtrll.list = (req, res) => {
     CargoEmpleado.find({}, function(err, emp) {
-        console.log(emp)
         Empleado.populate(emp, {path: "Empleado_ID"},function(err, emp){
             Cargo.populate(emp, {path: "Cargo_ID"},function(err, emp){
                 res.status(200).send(emp);
