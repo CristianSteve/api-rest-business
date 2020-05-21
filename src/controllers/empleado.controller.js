@@ -9,23 +9,32 @@ employeeCtrll.add = (req, res) => {
         } = req.body; 
         
     if(!(DocIdent && Nombre && Apellido && Telefono && Direccion && Sexo)){
-        res.json({message : "parameaaaters incomplete"})
+        res.json({message : "parameters incomplete"})
     }else{
         const employee = new Empleado({
             DocIdent, Nombre, Apellido,
             Telefono, Direccion, Sexo, Estado : true
         })
         employee.save();
-        res.json({message : "add new employee"})
+        res.json({message : "Add new employee","Usuario": Nombre})
     }
 }
 
-employeeCtrll.update = (req, res) => {
-    res.json({message : "update OK"})
+employeeCtrll.update = async (req, res) => {
+    const { DocIdent, Nombre, Apellido,
+        Telefono, Direccion, Sexo 
+    } = req.body; 
+    if(!(DocIdent && Nombre && Apellido && Telefono && Direccion && Sexo)){
+        res.status(404).json({message : "parameters incomplete"});
+    }
+
+    await Empleado.findByIdAndUpdate(req.userId,{DocIdent, Nombre, Apellido, Direccion, Sexo, Telefono}); 
+    res.json({message : "Update OK", "Documento" : DocIdent, "User" : Nombre});
 }
 
-employeeCtrll.list = (req, res) => {
-    res.json({message : "list OK"})
+employeeCtrll.list = async (req, res) => {
+    const employee = await Empleado.find().lean();             //Transforma objeto JSON legible 
+    res.json(employee)
 }
 
 employeeCtrll.error = (req, res) => {

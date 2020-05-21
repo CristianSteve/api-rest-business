@@ -12,7 +12,7 @@ turnoCtrll.update = (req, res) => {
 }
 
 turnoCtrll.list = (req, res) => {
-    res.json({message : "list OK"})
+    res.json({message : "list OK"});
 }
 
 turnoCtrll.error = (req, res) => {

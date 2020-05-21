@@ -8,13 +8,13 @@ const Cargo = require('../models/Cargo');                       //Modelo de dato
 cargoEmployeeCtrll.add = (req, res) => {
     const { Empleado_ID, Cargo_ID } = req.body; 
     if(!(Empleado_ID && Cargo_ID)){
-        res.json({message : "parameaaatears incomplete"})
+        res.json({message : "parametears incomplete"})
     }else{
         const cargoEmployee = new CargoEmpleado({
             Empleado_ID, Cargo_ID, Estado : true
         })
         cargoEmployee.save();
-        res.json({message : "add new employee"})
+        res.json({message : "Add new employee to position"})
     }
 }
 

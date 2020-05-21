@@ -12,7 +12,7 @@ cargoCtrll.add = (req, res) => {
             Nombre, Descripcion, Estado : true
         });
         newCargo.save();
-        res.json({message : "new cargo"})
+        res.json({message : "New cargo created",Nombre})
     }
 }
 
@@ -20,8 +20,9 @@ cargoCtrll.update = (req, res) => {
     res.json({message : "update OK"})
 }
 
-cargoCtrll.list = (req, res) => {
-    res.json({message : "list OK"})
+cargoCtrll.list = async (req, res) => {
+    const cargo = await Cargo.find().lean();             //Transforma objeto JSON legible 
+    res.json(cargo);
 }
 
 cargoCtrll.error = (req, res) => {

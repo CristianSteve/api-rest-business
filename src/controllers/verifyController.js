@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 
 function verifyToken(req, res, next){
-    console.log('entro')
     const token = req.headers['token-user'];
     if(!token)
         return res.status(401).json({message : 'usuario no autorizado'});

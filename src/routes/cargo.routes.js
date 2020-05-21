@@ -7,5 +7,6 @@ const vfToken = require('../controllers/verifyController');             //Verifi
 router.post('/add', vfToken, add);
 router.put('/', vfToken, update);
 router.get('/', vfToken, list);
+router.get('*', vfToken, error);
 
 module.exports = router;

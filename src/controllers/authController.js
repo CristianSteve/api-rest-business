@@ -11,7 +11,7 @@ authController.find = async (req, res) => {
     if (user.length == 0)
         res.status(404).res.json({ message: 'user no found' })
     const token = jwt.sign({ id: user._id }, process.env.SECRET_TOKEN, {
-        expiresIn: 15
+        expiresIn: 120
     });
     res.json({ Nombre: user.Nombre, Apellido: user.Apellido, token });
 
