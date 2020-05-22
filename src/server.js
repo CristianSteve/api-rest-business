@@ -24,6 +24,9 @@ app.use(express.json());
 app.use('/employee', require('./routes/empleado.routes'));
 app.use('/cargo', require('./routes/cargo.routes'));
 app.use('/employee/cargo', require('./routes/employeeCargo.routes'));
+app.use('/barrio', require('./routes/barrio.routes'));
+app.use('/localidad', require('./routes/localidad.routes'));
+app.use('/cardinalidad', require('./routes/cardinalidad.routes'));
 //static files
 
 
